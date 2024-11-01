@@ -15,9 +15,9 @@ def create_memory_leak():
     """Simulate a memory leak by creating tensors and holding onto them."""
     print(f"Running on device: {torch.cuda.get_device_name(device)}")
 
-    for i in range(100):
+    for i in range(100000):
         # Allocate a tensor on the GPU with minimal computation
-        tensor = torch.zeros((512, 512), device=device)
+        tensor = torch.zeros((1024, 1024), device=device)
 
         # Simulate light GPU usage with a simple operation
         tensor += 1

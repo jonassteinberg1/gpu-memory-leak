@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gpu-memory-leak
+  labels:
+    app: gpu-memory-leak
+spec:
+  strategy:
+    type: Recreate
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gpu-memory-leak
+  template:
+    metadata:
+      labels:
+        app: gpu-memory-leak
+    spec:
+      containers:
+        - name: gpu-memory-leak
+          image: 379683964026.dkr.ecr.us-east-1.amazonaws.com/gpu-memory-leak:v1.0.7
+          resources:
+            limits:
+              nvidia.com/gpu: 1  # Request one GPU
+          command: ["python3", "memory_leak.py"]
+      nodeSelector:
+        nvidia.com/gpu.present: "true"  # Ensures it runs on a GPU node
