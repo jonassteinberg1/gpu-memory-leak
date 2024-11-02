@@ -1,4 +1,7 @@
-hello:
-  stage: hello
+stages:
+  - test
+
+hello_world:
+  stage: test
   script:
-    - echo "Hello, $GITLAB_USER_LOGIN!"
+    - echo "Hello, World!"
