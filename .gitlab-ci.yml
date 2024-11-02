@@ -1,4 +1,4 @@
 hello:
-  stage: hey
+  stage: hello
   script:
-    - echo "Hey, $GITLAB_USER_LOGIN!"
+    - echo "Hello, $GITLAB_USER_LOGIN!"
